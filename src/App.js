@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   handleSave(event) {
-    alert('Saved New Data For: ' + this.state.selection);
+    alert('Saved New Data For: ' + this.state.current);
     event.preventDefault();
     console.log(this.state.currentTransactionNames);
     fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/updatecompany", {
@@ -50,7 +50,7 @@ class App extends Component {
         sScore: parseInt(this.state.currentSScore),
         transactionString: this.state.currentTransactionNames
       })
-    }).then(this.setState({
+    });/*.then(this.setState({
       creatingNew: false,
       current: undefined,
       currentEScore: undefined,
@@ -62,7 +62,7 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       }
-    }).then(response => response.json()).then(json => this.setState({companies: json})));
+    }).then(response => response.json()).then(json => this.setState({companies: json})));*/
   }
 
   componentWillMount() {
