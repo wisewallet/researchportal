@@ -58,7 +58,7 @@ class App extends Component {
   }
 
   render() {
-    if (!this.state.current) {
+    if (this.state.current == undefined) {
       return (<div className="App">
         <form onSubmit={this.handleSearch}>
           <label>
