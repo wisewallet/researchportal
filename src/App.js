@@ -22,11 +22,20 @@ class App extends Component {
     event.preventDefault();
   }
 
+  componentWillMount() {
+    fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/getAllCompanies", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(response => response.json()).then(json => this.setState({companies: json}));
+  }
+
   render() {
     return (<div className="App">
       <form onSubmit={this.handleSubmit}>
         <label>
-          Pick your favorite flavor:
+          Select Company:
           <select value={this.state.value} onChange={this.handleChange}>
             <option value="grapefruit">Grapefruit</option>
             {this.state.companies.map((name) => (
