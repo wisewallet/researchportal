@@ -28,7 +28,7 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       }
-    }).then(response => response.json()).then(json => this.setState({companies: json}));
+    }).then(response => response.json()).then(json => this.setState({companies: body}));
   }
 
   render() {
