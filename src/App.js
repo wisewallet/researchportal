@@ -43,8 +43,21 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({name: this.state.current, eScore: parseInt(this.state.currentEScore), gScore: parseInt(this.state.currentGScore), sScore: parseInt(this.state.currentSScore), transactionString: this.state.currentTransactionNames})
-    }).then(this.setState({creatingNew: false, current: undefined, currentEScore: undefined, currentGScore: undefined, currentSScore: undefined, currentTransactionNames: undefined}));
+      body: JSON.stringify({
+        name: this.state.current,
+        eScore: parseInt(this.state.currentEScore),
+        gScore: parseInt(this.state.currentGScore),
+        sScore: parseInt(this.state.currentSScore),
+        transactionString: this.state.currentTransactionNames
+      })
+    }).then(this.setState({
+      creatingNew: false,
+      current: undefined,
+      currentEScore: undefined,
+      currentGScore: undefined,
+      currentSScore: undefined,
+      currentTransactionNames: undefined
+    }));
   }
 
   componentWillMount() {
@@ -69,10 +82,12 @@ class App extends Component {
           </label>
           <input type="submit" value="Submit"/>
         </form>
-        <button onClick={()=>{this.setState({creatingNew: true}); }}>Create New Company</button>
+        <button onClick={() => {
+            this.setState({creatingNew: true});
+          }}>Create New Company</button>
       </div>);
-    } else if(this.state.creatingNew == true){
-      <div className="App">
+    } else if (this.state.creatingNew == true) {
+      return (<div className="App">
         <form onSubmit={this.handleSave}>
           <label>Name:
           </label><input name="current" type="text" value={this.state.current} onChange={this.handleChange}/>
@@ -91,7 +106,7 @@ class App extends Component {
           <hr/>
           <input type="submit" value="Save"/>
         </form>
-      </div>
+      </div>);
     }
     return (<div className="App">
       <form onSubmit={this.handleSearch}>
