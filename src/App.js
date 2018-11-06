@@ -39,7 +39,7 @@ class App extends Component {
           <select value={this.state.value} onChange={this.handleChange}>
             <option value="grapefruit">Grapefruit</option>
             {this.state.companies.map((name) => (
-              <option value={name}>{name}</option>
+              <option key={name} value={name}>{name}</option>
             ))}
           </select>
         </label>
