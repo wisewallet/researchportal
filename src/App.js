@@ -27,7 +27,7 @@ class App extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({name: this.state.value})
-    }).then(response => response.json()).then(json => this.setState({current: json}));
+    }).then(response => response.json()).then(json => this.setState({current: json.name}));
   }
 
   componentWillMount() {
