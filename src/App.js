@@ -31,7 +31,7 @@ class App extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({name: this.state.selection})
-    }).then(response => response.json()).then(json => this.setState({current: json.name, currentEScore: json.eScore, currentSScore: json.sScore, currentGScore: json.gScore, currentTransactionNames: json.transactionString}));
+    }).then(response => response.json()).then(json => this.setState({current: json.name, currentEScore: json.eScore, currentSScore: json.sScore, currentGScore: json.gScore, currentTransactionNames: json.transactionString.toString()}));
   }
 
   handleSave(event) {
@@ -43,7 +43,7 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({name: this.state.current, eScore: this.state.currentEScore, gScore: this.state.currentGScore, sScore: this.currentSScore, transactionString: this.currentTransactionNames})
+      body: JSON.stringify({name: "CVS", eScore: 10, gScore: 30, sScore: 20, transactionString: "a,b,c"})
     });//.then(this.setState({current: undefined, currentEScore: undefined, currentGScore: undefined, currentSScore: undefined, currentTransactionNames: undefined}));
   }
 
