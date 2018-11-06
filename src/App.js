@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/getAllCompanies", {
+    fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/getallcompanies", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
