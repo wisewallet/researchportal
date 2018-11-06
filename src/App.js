@@ -31,7 +31,7 @@ class App extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({name: this.state.selection})
-    }).then(response => response.json()).then(json => this.setState({current: json.name, currentEScore: json.eScore}));
+    }).then(response => response.json()).then(json => this.setState({current: json.name, currentEScore: json.eScore, currentSScore: json.sScore, currentGScore: json.gScore, currentTransactionNames: json.transactionString}));
   }
 
   componentWillMount() {
@@ -71,7 +71,10 @@ class App extends Component {
       </form>
       <h1>{this.state.current}</h1>
       <form onSubmit={this.handleSearch}>
-        <input name="currentEScore" type="text" value={this.state.currentEScore} onChange={this.handleChange}/>
+        <label>Environmental: </label><input name="currentEScore" type="text" value={this.state.currentEScore} onChange={this.handleChange}/>
+        <label>Social: </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
+        <label>Governance: </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
+        <label>Possible Transaction Names: </label><input name="currentTransactionNames" type="text" value={this.state.currentTransactionNames} onChange={this.handleChange}/>
         <input type="submit" value="Submit"/>
       </form>
     </div>);
