@@ -18,6 +18,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   handleChange(event) {
@@ -39,6 +40,18 @@ class App extends Component {
       body: JSON.stringify({name: this.state.selection})
     }).then(response => response.json()).then(json => this.setState({current: json.name, currentEScore: json.eScore, currentSScore: json.sScore, currentGScore: json.gScore, currentTransactionNames: json.transactionString.toString()}));
   }
+
+  handleCancel(event) {
+    event.preventDefault();
+    this.setState({
+      current: null,
+      currentTransactionNames: '',
+      currentEScore: 0,
+      currentSScore: 0,
+      currentGScore: 0,
+      creatingNew: false
+    })
+}
 
   handleSave(event) {
     alert('Saved Data For: ' + this.state.current);
@@ -117,6 +130,7 @@ class App extends Component {
           <hr/>
           <input type="submit" value="Save"/>
         </form>
+        <button onClick={this.handleCancel}>Cancel</button>
       </div>);
     }
     return (<div className="App">
@@ -146,6 +160,8 @@ class App extends Component {
         <hr/>
         <input type="submit" value="Save"/>
       </form>
+
+      <button onClick={this.handleCancel}>Cancel</button>
     </div>);
   }
 }
