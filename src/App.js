@@ -69,6 +69,7 @@ class App extends Component {
           </label>
           <input type="submit" value="Submit"/>
         </form>
+        <button>Create New Company</button>
       </div>);
     }
     return (<div className="App">
