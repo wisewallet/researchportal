@@ -57,7 +57,12 @@ class App extends Component {
       currentGScore: undefined,
       currentSScore: undefined,
       currentTransactionNames: undefined
-    })).then(componentWillMount());
+    })).then(fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/getallcompanies", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(response => response.json()).then(json => this.setState({companies: json})));
   }
 
   componentWillMount() {
@@ -83,7 +88,8 @@ class App extends Component {
           <input type="submit" value="Submit"/>
         </form>
         <button onClick={() => {
-            this.setState({creatingNew: true, current: ''}); console.log("creating new company");
+            this.setState({creatingNew: true, current: ''});
+            console.log("creating new company");
           }}>Create New Company</button>
       </div>);
     } else if (this.state.creatingNew == true) {
