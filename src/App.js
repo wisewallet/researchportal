@@ -83,7 +83,7 @@ class App extends Component {
           <input type="submit" value="Submit"/>
         </form>
         <button onClick={() => {
-            this.setState({creatingNew: true}); console.log("creating new company");
+            this.setState({creatingNew: true, current: ''}); console.log("creating new company");
           }}>Create New Company</button>
       </div>);
     } else if (this.state.creatingNew == true) {
