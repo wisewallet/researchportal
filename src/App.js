@@ -44,7 +44,7 @@ class App extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({name: this.state.current, eScore: this.state.currentEScore, gScore: this.state.currentGScore, sScore: this.currentSScore, transactionString: this.currentTransactionNames})
-    }).then(this.setState({current: undefined, currentEScore: undefined, currentGScore: undefined, currentSScore: undefined, currentTransactionNames: undefined}));
+    });//.then(this.setState({current: undefined, currentEScore: undefined, currentGScore: undefined, currentSScore: undefined, currentTransactionNames: undefined}));
   }
 
   componentWillMount() {
