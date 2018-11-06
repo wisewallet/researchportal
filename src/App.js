@@ -16,8 +16,9 @@ class App extends Component {
   handleChange(event) {
     console.log(event.target.name);
     console.log(event.target.value);
-    this.setState({[event.target.name]: event.target.value});
-    console.log(this.state.selection);
+    this.setState({
+      [event.target.name]: event.target.value
+    }).then(console.log(this.state.selection));
   }
 
   handleSearch(event) {
@@ -70,7 +71,7 @@ class App extends Component {
       </form>
       <h1>{this.state.current}</h1>
       <form onSubmit={this.handleSearch}>
-        <input name="currentEScore" type="text" value={this.state.currentEScore} onChange={this.handleChange} />
+        <input name="currentEScore" type="text" value={this.state.currentEScore} onChange={this.handleChange}/>
         <input type="submit" value="Submit"/>
       </form>
     </div>);
