@@ -45,6 +45,7 @@ class App extends Component {
       },
       body: JSON.stringify({name: this.state.selection})
     }).then(response => response.json()).then(json => this.setState({current: json.name, currentEScore: json.eScore, currentSScore: json.sScore, currentGScore: json.gScore, currentTransactionNames: json.transactionString}));
+    this.setState({current: ''});
   }
 
   componentWillMount() {
