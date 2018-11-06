@@ -37,6 +37,7 @@ class App extends Component {
   handleSave(event) {
     alert('Saved New Data For: ' + this.state.selection);
     event.preventDefault();
+    console.log(this.state.currentTransactionNames);
     fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/updatecompany", {
       method: "POST",
       headers: {
