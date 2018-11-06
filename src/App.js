@@ -63,7 +63,12 @@ class App extends Component {
       currentGScore: undefined,
       currentSScore: undefined,
       currentTransactionNames: undefined
-    }));
+    })).then(fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/getallcompanies", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(response => response.json()).then(json => this.setState({companies: json})));
   }
 
   componentWillMount() {
