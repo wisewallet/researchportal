@@ -35,10 +35,15 @@ class App extends Component {
   }
 
   handleSave(event) {
-    alert('A name was submitted: ' + this.state.selection);
+    alert('Saved New Data For: ' + this.state.selection);
     event.preventDefault();
-
-    this.setState({current: undefined});
+    fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/updatecompany", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({name: this.state.current, eScore: this.state.currentEScore, gScore: this.state.currentGScore, sScore: this.currentSScore, transactionString: this.currentTransactionNames})
+    }).then(this.setState({current: undefined, currentEScore: undefined, currentGScore: undefined, currentSScore: undefined, currentTransactionNames: undefined}));
   }
 
   componentWillMount() {
