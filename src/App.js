@@ -86,19 +86,19 @@ class App extends Component {
       <form onSubmit={this.handleSave}>
         <label>Environmental:
         </label><input name="currentEScore" type="text" value={this.state.currentEScore} onChange={this.handleChange}/>
-        <hr>
-          <label>Social:
-          </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
-          <hr>
-            <label>Governance:
-            </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
-            <hr>
-              <label>Possible Transaction Names:
-              </label><input name="currentTransactionNames" type="text" value={this.state.currentTransactionNames} onChange={this.handleChange}/>
-              <hr>
-                <input type="submit" value="Save"/>
-              </form>
-            </div>);
+        <hr/>
+        <label>Social:
+        </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
+        <hr/>
+        <label>Governance:
+        </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
+        <hr/>
+        <label>Possible Transaction Names:
+        </label><input name="currentTransactionNames" type="text" value={this.state.currentTransactionNames} onChange={this.handleChange}/>
+        <hr/>
+        <input type="submit" value="Save"/>
+      </form>
+    </div>);
   }
 }
 
