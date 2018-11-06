@@ -18,7 +18,7 @@ class App extends Component {
     console.log(event.target.value);
     this.setState({
       [event.target.name]: event.target.value
-    }, console.log(this.state.selection));
+    });
   }
 
   handleSearch(event) {
@@ -30,7 +30,7 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({name: this.state.value})
+      body: JSON.stringify({name: this.state.selection})
     }).then(response => response.json()).then(json => this.setState({current: json.name, currentEScore: json.eScore}));
   }
 
