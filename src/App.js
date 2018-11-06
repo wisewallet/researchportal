@@ -6,7 +6,13 @@ class App extends Component {
     super(props);
     this.state = {
       selection: '',
-      companies: ['']
+      companies: [''],
+      currentTransactionNames: '',
+      currentEScore: 0,
+      currentSScore: 0,
+      currentGScore: 0,
+      creatingNew: false,
+      current: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -35,7 +41,7 @@ class App extends Component {
   }
 
   handleSave(event) {
-    alert('Saved New Data For: ' + this.state.current);
+    alert('Saved Data For: ' + this.state.current);
     event.preventDefault();
     console.log(this.state.currentTransactionNames);
     fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/updatecompany", {
@@ -50,19 +56,14 @@ class App extends Component {
         sScore: parseInt(this.state.currentSScore),
         transactionString: this.state.currentTransactionNames
       })
-    });/*.then(this.setState({
+    }).then(this.setState({
       creatingNew: false,
-      current: undefined,
+      current: null,
       currentEScore: undefined,
       currentGScore: undefined,
       currentSScore: undefined,
       currentTransactionNames: undefined
-    })).then(fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/getallcompanies", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then(response => response.json()).then(json => this.setState({companies: json})));*/
+    }));
   }
 
   componentWillMount() {
@@ -75,7 +76,7 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.current == undefined) {
+    if (this.state.current == null) {
       return (<div className="App">
         <form onSubmit={this.handleSearch}>
           <label>
@@ -88,8 +89,7 @@ class App extends Component {
           <input type="submit" value="Submit"/>
         </form>
         <button onClick={() => {
-            this.setState({creatingNew: true, current: ''});
-            console.log("creating new company");
+            this.setState({creatingNew: true, current: ''}); console.log("creating new company");
           }}>Create New Company</button>
       </div>);
     } else if (this.state.creatingNew == true) {
