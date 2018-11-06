@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   handleSearch(event) {
-    alert('A name was submitted: ' + this.state.value);
+    alert('A name was submitted: ' + this.state.selection);
     event.preventDefault();
 
     fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/getcompanyinfo", {
