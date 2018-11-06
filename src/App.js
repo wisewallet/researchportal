@@ -90,7 +90,7 @@ class App extends Component {
         </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
         <hr/>
         <label>Governance:
-        </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
+        </label><input name="currentSScore" type="text" value={this.state.currentGScore} onChange={this.handleChange}/>
         <hr/>
         <label>Possible Transaction Names:
         </label><input name="currentTransactionNames" type="text" value={this.state.currentTransactionNames} onChange={this.handleChange}/>
