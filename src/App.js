@@ -38,13 +38,6 @@ class App extends Component {
     alert('A name was submitted: ' + this.state.selection);
     event.preventDefault();
 
-    fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/getcompanyinfo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({name: this.state.selection})
-    }).then(response => response.json()).then(json => this.setState({current: json.name, currentEScore: json.eScore, currentSScore: json.sScore, currentGScore: json.gScore, currentTransactionNames: json.transactionString}));
     this.setState({current: undefined});
   }
 
