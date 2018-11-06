@@ -43,7 +43,7 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({name: "CVS", eScore: 10, gScore: 30, sScore: 20, transactionString: "a,b,c"})
+      body: JSON.stringify({name: this.state.current, eScore: 90, gScore: 90, sScore: 90, transactionString: "a,b,c"})
     });//.then(this.setState({current: undefined, currentEScore: undefined, currentGScore: undefined, currentSScore: undefined, currentTransactionNames: undefined}));
   }
 
