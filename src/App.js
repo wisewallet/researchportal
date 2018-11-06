@@ -6,7 +6,7 @@ class App extends Component {
     super(props);
     this.state = {
       value: '',
-      companies: ['hi']
+      companies: ['']
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,7 +37,7 @@ class App extends Component {
         <label>
           Select Company:
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="grapefruit">Grapefruit</option>
+            <option value=""></option>
             {this.state.companies.map((name) => (
               <option key={name} value={name}>{name}</option>
             ))}
