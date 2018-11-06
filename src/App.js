@@ -11,6 +11,7 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
   handleChange(event) {
@@ -22,6 +23,18 @@ class App extends Component {
   }
 
   handleSearch(event) {
+    event.preventDefault();
+
+    fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/getcompanyinfo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({name: this.state.selection})
+    }).then(response => response.json()).then(json => this.setState({current: json.name, currentEScore: json.eScore, currentSScore: json.sScore, currentGScore: json.gScore, currentTransactionNames: json.transactionString}));
+  }
+
+  handleSave(event) {
     alert('A name was submitted: ' + this.state.selection);
     event.preventDefault();
 
@@ -70,14 +83,22 @@ class App extends Component {
         <input type="submit" value="Submit"/>
       </form>
       <h1>{this.state.current}</h1>
-      <form onSubmit={this.handleSearch}>
-        <label>Environmental: </label><input name="currentEScore" type="text" value={this.state.currentEScore} onChange={this.handleChange}/>
-        <label>Social: </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
-        <label>Governance: </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
-        <label>Possible Transaction Names: </label><input name="currentTransactionNames" type="text" value={this.state.currentTransactionNames} onChange={this.handleChange}/>
-        <input type="submit" value="Submit"/>
-      </form>
-    </div>);
+      <form onSubmit={this.handleSave}>
+        <label>Environmental:
+        </label><input name="currentEScore" type="text" value={this.state.currentEScore} onChange={this.handleChange}/>
+        <hr>
+          <label>Social:
+          </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
+          <hr>
+            <label>Governance:
+            </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
+            <hr>
+              <label>Possible Transaction Names:
+              </label><input name="currentTransactionNames" type="text" value={this.state.currentTransactionNames} onChange={this.handleChange}/>
+              <hr>
+                <input type="submit" value="Save"/>
+              </form>
+            </div>);
   }
 }
 
