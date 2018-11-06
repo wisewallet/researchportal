@@ -5,7 +5,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: '',
+      companies: ['hi']
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,9 +29,9 @@ class App extends Component {
           Pick your favorite flavor:
           <select value={this.state.value} onChange={this.handleChange}>
             <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
+            {this.state.companies.map((name) => (
+              <option value={name}>{name}</option>
+            ))}
           </select>
         </label>
         <input type="submit" value="Submit"/>
