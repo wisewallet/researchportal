@@ -5,7 +5,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      selection: '',
       companies: ['']
     };
 
@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({event.target.name: event.target.value});
   }
 
   handleSearch(event) {
@@ -27,7 +27,7 @@ class App extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({name: this.state.value})
-    }).then(response => response.json()).then(json => this.setState({current: json.name}));
+    }).then(response => response.json()).then(json => this.setState({current: json.name, currentEScore: json.eScore}));
   }
 
   componentWillMount() {
@@ -45,7 +45,7 @@ class App extends Component {
         <form onSubmit={this.handleSearch}>
           <label>
             Select Company:
-            <select value={this.state.value} onChange={this.handleChange}>
+            <select name="selection" value={this.state.selection} onChange={this.handleChange}>
               <option value=""></option>
               {this.state.companies.map((name) => (<option key={name} value={name}>{name}</option>))}
             </select>
@@ -58,7 +58,7 @@ class App extends Component {
       <form onSubmit={this.handleSearch}>
         <label>
           Select Company:
-          <select value={this.state.value} onChange={this.handleChange}>
+          <select name="selection" value={this.state.selection} onChange={this.handleChange}>
             <option value=""></option>
             {this.state.companies.map((name) => (<option key={name} value={name}>{name}</option>))}
           </select>
@@ -66,6 +66,10 @@ class App extends Component {
         <input type="submit" value="Submit"/>
       </form>
       <h1>{this.state.current}</h1>
+      <form onSubmit={this.handleSearch}>
+        <input name="currentEScore" type="text" value={this.state.currentEScore} onChange={this.handleChange} />
+        <input type="submit" value="Submit"/>
+      </form>
     </div>);
   }
 }
