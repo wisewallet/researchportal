@@ -17,6 +17,7 @@ class App extends Component {
     console.log(event.target.name);
     console.log(event.target.value);
     this.setState({[event.target.name]: event.target.value});
+    console.log(this.state.selection);
   }
 
   handleSearch(event) {
