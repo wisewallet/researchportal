@@ -57,7 +57,7 @@ class App extends Component {
       currentGScore: undefined,
       currentSScore: undefined,
       currentTransactionNames: undefined
-    }));
+    })).then(componentWillMount());
   }
 
   componentWillMount() {
