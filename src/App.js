@@ -38,7 +38,7 @@ class App extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({name: this.state.selection})
-    }).then(response => response.json()).then(json => this.setState({current: json.name, currentEScore: json.eScore, currentSScore: json.sScore, currentGScore: json.gScore, currentTransactionNames: json.transactionString.toString()}));
+    }).then(response => response.json()).then(json => this.setState({current: json.name, currentCategory:json.category, currentEScore: json.eScore, currentSScore: json.sScore, currentGScore: json.gScore, currentTransactionNames: json.transactionString.toString()}));
   }
 
   handleCancel(event) {
@@ -49,9 +49,10 @@ class App extends Component {
       currentEScore: 0,
       currentSScore: 0,
       currentGScore: 0,
+      currentCategory: '',
       creatingNew: false
     })
-}
+  }
 
   handleSave(event) {
     alert('Saved Data For: ' + this.state.current);
@@ -67,7 +68,8 @@ class App extends Component {
         eScore: parseInt(this.state.currentEScore),
         gScore: parseInt(this.state.currentGScore),
         sScore: parseInt(this.state.currentSScore),
-        transactionString: this.state.currentTransactionNames
+        transactionString: this.state.currentTransactionNames,
+        category: this.state.currentCategory
       })
     }).then(this.setState({
       creatingNew: false,
@@ -75,7 +77,8 @@ class App extends Component {
       currentEScore: undefined,
       currentGScore: undefined,
       currentSScore: undefined,
-      currentTransactionNames: undefined
+      currentTransactionNames: undefined,
+      currentCategory: undefined
     })).then(fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/getallcompanies", {
       method: "GET",
       headers: {
@@ -107,7 +110,8 @@ class App extends Component {
           <input type="submit" value="Submit"/>
         </form>
         <button onClick={() => {
-            this.setState({creatingNew: true, current: ''}); console.log("creating new company");
+            this.setState({creatingNew: true, current: ''});
+            console.log("creating new company");
           }}>Create New Company</button>
       </div>);
     } else if (this.state.creatingNew == true) {
@@ -115,6 +119,9 @@ class App extends Component {
         <form onSubmit={this.handleSave}>
           <label>Name:
           </label><input name="current" type="text" value={this.state.current} onChange={this.handleChange}/>
+          <hr/>
+          <label>Category:
+          </label><input name="currentCategory" type="text" value={this.state.currentCategory} onChange={this.handleChange}/>
           <hr/>
           <label>Environmental:
           </label><input name="currentEScore" type="text" value={this.state.currentEScore} onChange={this.handleChange}/>
