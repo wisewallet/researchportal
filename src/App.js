@@ -38,7 +38,14 @@ class App extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({name: this.state.selection})
-    }).then(response => response.json()).then(json => this.setState({current: json.name, currentCategory:json.category, currentEScore: json.eScore, currentSScore: json.sScore, currentGScore: json.gScore, currentTransactionNames: json.transactionString.toString()}));
+    }).then(response => response.json()).then(json => this.setState({
+      current: json.name,
+      currentCategory: json.category,
+      currentEScore: json.eScore,
+      currentSScore: json.sScore,
+      currentGScore: json.gScore,
+      currentTransactionNames: json.transactionString.toString()
+    }));
   }
 
   handleCancel(event) {
@@ -153,6 +160,9 @@ class App extends Component {
       </form>
       <h1>{this.state.current}</h1>
       <form onSubmit={this.handleSave}>
+        <label>Category:
+        </label><input name="currentCategory" type="text" value={this.state.currentCategory} onChange={this.handleChange}/>
+        <hr/>
         <label>Environmental:
         </label><input name="currentEScore" type="text" value={this.state.currentEScore} onChange={this.handleChange}/>
         <hr/>
