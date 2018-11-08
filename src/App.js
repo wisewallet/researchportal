@@ -142,7 +142,7 @@ class App extends Component {
           </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
           <hr/>
           <label>Governance:
-          </label><input name="currentSScore" type="text" value={this.state.currentGScore} onChange={this.handleChange}/>
+          </label><input name="currentGScore" type="text" value={this.state.currentGScore} onChange={this.handleChange}/>
           <hr/>
           <label>Politics:
           </label><input name="currentPScore" type="text" value={this.state.currentPScore} onChange={this.handleChange}/>
