@@ -11,6 +11,7 @@ class App extends Component {
       currentEScore: 0,
       currentSScore: 0,
       currentGScore: 0,
+      currentPScore: '',
       creatingNew: false,
       current: null
     };
@@ -44,6 +45,7 @@ class App extends Component {
       currentEScore: json.eScore,
       currentSScore: json.sScore,
       currentGScore: json.gScore,
+      currentPScore: json.pScore,
       currentTransactionNames: json.transactionString.toString()
     }));
   }
@@ -57,6 +59,7 @@ class App extends Component {
       currentSScore: 0,
       currentGScore: 0,
       currentCategory: '',
+      currentPScore: '',
       creatingNew: false
     })
   }
@@ -76,6 +79,7 @@ class App extends Component {
         gScore: parseInt(this.state.currentGScore),
         sScore: parseInt(this.state.currentSScore),
         transactionString: this.state.currentTransactionNames,
+        pScore: this.state.currentPScore.toLowerCase(),
         category: this.state.currentCategory
       })
     }).then(this.setState({
@@ -85,7 +89,8 @@ class App extends Component {
       currentGScore: undefined,
       currentSScore: undefined,
       currentTransactionNames: undefined,
-      currentCategory: undefined
+      currentPScore: '',
+      currentCategory: ''
     })).then(fetch("https://u9b604czc3.execute-api.us-east-1.amazonaws.com/default/getallcompanies", {
       method: "GET",
       headers: {
@@ -139,6 +144,9 @@ class App extends Component {
           <label>Governance:
           </label><input name="currentSScore" type="text" value={this.state.currentGScore} onChange={this.handleChange}/>
           <hr/>
+          <label>Politics:
+          </label><input name="currentPScore" type="text" value={this.state.currentPScore} onChange={this.handleChange}/>
+          <hr/>
           <label>Possible Transaction Names:
           </label><input name="currentTransactionNames" type="text" value={this.state.currentTransactionNames} onChange={this.handleChange}/>
           <hr/>
@@ -171,6 +179,9 @@ class App extends Component {
         <hr/>
         <label>Governance:
         </label><input name="currentSScore" type="text" value={this.state.currentGScore} onChange={this.handleChange}/>
+        <hr/>
+        <label>Politics:
+        </label><input name="currentPScore" type="text" value={this.state.currentPScore} onChange={this.handleChange}/>
         <hr/>
         <label>Possible Transaction Names:
         </label><input name="currentTransactionNames" type="text" value={this.state.currentTransactionNames} onChange={this.handleChange}/>
