@@ -80,7 +80,7 @@ class App extends Component {
         sScore: parseInt(this.state.currentSScore),
         transactionString: this.state.currentTransactionNames,
         pScore: this.state.currentPScore.toLowerCase(),
-        category: this.state.currentCategory
+        category: this.state.currentCategory.toLowerCase()
       })
     }).then(this.setState({
       creatingNew: false,
