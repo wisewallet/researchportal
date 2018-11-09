@@ -126,34 +126,6 @@ class App extends Component {
             console.log("creating new company");
           }}>Create New Company</button>
       </div>);
-    } else if (this.state.creatingNew == true) {
-      return (<div className="App">
-        <form onSubmit={this.handleSave}>
-          <label>Name:
-          </label><input name="current" type="text" value={this.state.current} onChange={this.handleChange}/>
-          <hr/>
-          <label>Category:
-          </label><input name="currentCategory" type="text" value={this.state.currentCategory} onChange={this.handleChange}/>
-          <hr/>
-          <label>Environmental:
-          </label><input name="currentEScore" type="text" value={this.state.currentEScore} onChange={this.handleChange}/>
-          <hr/>
-          <label>Social:
-          </label><input name="currentSScore" type="text" value={this.state.currentSScore} onChange={this.handleChange}/>
-          <hr/>
-          <label>Governance:
-          </label><input name="currentGScore" type="text" value={this.state.currentGScore} onChange={this.handleChange}/>
-          <hr/>
-          <label>Politics:
-          </label><input name="currentPScore" type="text" value={this.state.currentPScore} onChange={this.handleChange}/>
-          <hr/>
-          <label>Possible Transaction Names:
-          </label><input name="currentTransactionNames" type="text" value={this.state.currentTransactionNames} onChange={this.handleChange}/>
-          <hr/>
-          <input type="submit" value="Save"/>
-        </form>
-        <button onClick={this.handleCancel}>Cancel</button>
-      </div>);
     }
     return (<div className="App">
       <form onSubmit={this.handleSearch}>
@@ -165,9 +137,11 @@ class App extends Component {
           </select>
         </label>
         <input type="submit" value="Submit"/>
-      </form>
-      <h1>{this.state.current}</h1>
+      </form>\
       <form onSubmit={this.handleSave}>
+        <label>Name:
+        </label><input name="current" type="text" value={this.state.current} onChange={this.handleChange}/>
+        <hr/>
         <label>Category:
         </label><input name="currentCategory" type="text" value={this.state.currentCategory} onChange={this.handleChange}/>
         <hr/>
