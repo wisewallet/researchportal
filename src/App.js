@@ -137,7 +137,7 @@ class App extends Component {
           </select>
         </label>
         <input type="submit" value="Submit"/>
-      </form>\
+      </form>
       <form onSubmit={this.handleSave}>
         <label>Name:
         </label><input name="current" type="text" value={this.state.current} onChange={this.handleChange}/>
